@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "646784081256",
+    "firebase_url": "https://flutter-gram-f18eb.firebaseio.com",
+    "project_id": "flutter-gram-f18eb",
+    "storage_bucket": "flutter-gram-f18eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:646784081256:android:f784893fc56e0d0b808add",
+        "android_client_info": {
+          "package_name": "com.aerosasi.fluttergram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "646784081256-rvkfh3vqrgqqvkkd9ukda77onkd4dcuv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aerosasi.fluttergram",
+            "certificate_hash": "e33beb9e646980f52c13c7ffba92b95b8f53fbf4"
+          }
+        },
+        {
+          "client_id": "646784081256-caetpjirc40c3hfosndfmrgcbd45m1ci.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArzqy1cU3ZJqK7oq-X2uXSFifTDsTbEJI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "646784081256-caetpjirc40c3hfosndfmrgcbd45m1ci.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
