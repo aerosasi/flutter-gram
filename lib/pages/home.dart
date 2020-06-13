@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttergram/models/user.dart';
 import 'package:fluttergram/pages/activity_feed.dart';
 import 'package:fluttergram/pages/create_account.dart';
 import 'package:fluttergram/pages/profile.dart';
@@ -12,7 +13,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 final GoogleSignIn googleSignIn = GoogleSignIn();
 final usersRef = Firestore.instance.collection('users');
 final timeStamp = DateTime.now();
-
+User currentUser;
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
@@ -65,28 +66,32 @@ class _HomeState extends State<Home> {
   createUserInFirestore() async{
     // check if user exists in user collection deatabase (acc to ther id)
     final user=googleSignIn.currentUser;
-    final doc= await usersRef.document(user.id).get();
+    DocumentSnapshot doc= await usersRef.document(user.id).get();
 
     //if user does not exist we need to take them to create account page
-    String uname;
-    if(!doc.exists)
-      {
-      final username = await Navigator.push(context, MaterialPageRoute(builder: (context) => CreateAccount() ));
-      uname= username;
-      }
-    //get username from create account and use it to make new user document in yser colllection
-  usersRef.document(user.id).setData({
-    "id" : user.id,
-    "username": uname,
-    "photoUrl" : user.photoUrl,
-    "email" : user.email,
-    "displayName" : user.displayName,
-    "bio": " ",
-    "Timestamp": timeStamp,
+    if(!doc.exists) {
+      final username = await Navigator.push(
+          context, MaterialPageRoute(builder: (context) => CreateAccount()));
 
-  });
+      //get username from create account and use it to make new user document in yser colllection
+      usersRef.document(user.id).setData({
+        "id": user.id,
+        "username": username,
+        "photoUrl": user.photoUrl,
+        "email": user.email,
+        "displayName": user.displayName,
+        "bio": " ",
+        "Timestamp": timeStamp,
+
+      });
+      doc = await usersRef.document(user.id).get();
+    }
+  currentUser =  User.fromDocument(doc);
+    print(currentUser);
+    print(currentUser.username);
 
   }
+
 
 // controllers needs to be disposed
   @override
