@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
-AppBar header({ bool isAppTitle=false,String title}) {
+AppBar header({ bool isAppTitle=false,String title ,removeBackButton = false}) {
   return AppBar(
+    automaticallyImplyLeading: removeBackButton ? false : true,
     title: Text(
+
      isAppTitle ?'Flutter-Gram' : title,
       style: TextStyle(
         color: Colors.white,
